@@ -1,3 +1,4 @@
+/*Makenzie Johnson and Nicholas Wandinata*/
 #include <iostream>
 #include <fstream>
 
