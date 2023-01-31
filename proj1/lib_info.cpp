@@ -13,6 +13,7 @@ int main(int argc, char **argv) {
 	file.open(argv[1]);
 	while(!file.eof()) {
 		getline(file, musicInfo);
+		replace(musicInfo.begin(), musicInfo.end(), '_', ' ');
 	}
 
 	file.close();
