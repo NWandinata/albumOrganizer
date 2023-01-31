@@ -1,6 +1,8 @@
 /*Makenzie Johnson and Nicholas Wandinata*/
 #include <iostream>
 #include <fstream>
+#include <strings>
+#include "lib_info.h"
 
 using namespace std;
 
