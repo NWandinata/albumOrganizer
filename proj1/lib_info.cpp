@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
 	while(!file.eof()) {
 		getline(file, musicInfo);
 		replace(musicInfo.begin(), musicInfo.end(), '_', ' ');
-		// Insert into struct here
+		// Insert into struct here using sstream
 
 	}
 
