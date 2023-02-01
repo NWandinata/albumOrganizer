@@ -1,6 +1,10 @@
 //Header file
 //Makenzie Johnson and Nicholas Wandinata
 
+#include <map>
+#include <string>
+using namespace std;
+
 struct Song {
     string title;
     int time;  // could also be a string
