@@ -9,7 +9,7 @@ using namespace std;
 
 struct Song {
     string title; // Song title 
-    int time;  // could also be a string; Song's total runtime
+    string time;  // could also be a string; Song's total runtime
 };
 
 struct Album {

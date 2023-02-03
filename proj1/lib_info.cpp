@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
         // if the artist exists
         else {
             it -> second.nsongs += 1; // adds songs
-			it -> second.time = timeToSec(songTime);
+			it -> second.time += timeToSec(songTime);
             //for time: create function that converts to seconds and store it below
             //it -> second.time += songTime;
         }
@@ -75,14 +75,15 @@ int main(int argc, char **argv) {
             it -> second.albums.insert(make_pair(album, alb));
             al_it = it -> second.albums.find(album);
             al_it -> second.name = album;
-            al_it -> second.time = 0;
-            al_it -> second.nsongs = 1;
+            al_it -> second.time += timeToSec(songTime);
+            al_it -> second.nsongs += 1;
 
         }
 
         // if the album doesnt exist
         else{
-            al_it -> second.nsongs += 1; //add the certain songs
+            al_it -> second.nsongs = 1; //add the certain songs
+			al_it -> second.time = timeToSec(songTime);
         }
 
         //process for songs; just add the songs
