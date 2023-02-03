@@ -67,7 +67,7 @@ int main(int argc, char **argv) {
             artists.insert(make_pair(artist, art));
             it = artists.find(artist);
             it -> second.nsongs = 1; 
-            it -> second.time = timeToSec(songTime); 
+            it -> second.time += timeToSec(songTime); 
             it -> second.name = artist;
         } 
 
@@ -93,7 +93,7 @@ int main(int argc, char **argv) {
 		// Keeps running total of nSongs and total time for artist
         else{
             al_it -> second.nsongs = 1;
-			al_it -> second.time = timeToSec(songTime);
+			al_it -> second.time += timeToSec(songTime);
         }
 
         // Stores song info
