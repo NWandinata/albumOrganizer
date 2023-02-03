@@ -104,6 +104,31 @@ int main(int argc, char **argv) {
         so_it -> second.title = title;
     }
 
+	//Once done, print out everything
+    for(it = artists.begin(); it != artists.end(); it++){
+        string new_name = it -> second.name;
+        replace(new_name.begin(), new_name.end(), '_', ' ');
+
+        cout << new_name << ": " << it -> second.nsongs << ", " << it -> second.time << endl;
+
+        //albums
+        for(al_it = it -> second.albums.begin(); al_it != it -> second.albums.end(); al_it++){
+            string new_name = al_it -> second.name;
+            replace(new_name.begin(), new_name.end(), '_', ' ');
+
+            cout << "        " << new_name << ": " << al_it -> second.nsongs << ", " << al_it -> second.time << endl;
+
+            //songs
+            for(so_it = al_it -> second.songs.begin(); so_it != al_it -> second.songs.end(); so_it++){
+                string new_name = so_it -> second.title;
+                replace(new_name.begin(), new_name.end(), '_', ' ');
+
+                cout << "                " << so_it -> first << ". " << new_name
+                << ": " << so_it -> second.time << endl;
+            }
+        }
+    }
+
     file.close();
     return 0;
 }
