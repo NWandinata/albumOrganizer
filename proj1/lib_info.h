@@ -26,3 +26,6 @@ struct Artist {
     int nsongs;
 };
 
+int timeToSec(string time);
+string timeToMin(int time);
+

@@ -11,6 +11,25 @@ TA: Christian, Andrew*/
 
 using namespace std;
 
+int timeToSec(string time) {
+    int min, sec;
+    char colon;
+    istringstream iss(time);
+    iss >> min >> colon >> sec;
+    sec += (min * 60);
+    return sec;
+}
+
+string timeToMin(int time) {
+    int min, sec;
+    string colonTime;
+    min = time / 60;
+    sec = time - min * 60;
+    colonTime = to_string(min) + ":" + to_string(sec);
+    if(sec == 0) colonTime += "0";
+    return colonTime;
+}
+
 int main(int argc, char **argv) {
     string musicInfo, title, songTime, artist, album, genre;
     int track;
@@ -37,13 +56,14 @@ int main(int argc, char **argv) {
             artists.insert(make_pair(artist, art));
             it = artists.find(artist);
             it -> second.nsongs = 1; 
-            it -> second.time = 0; 
+            it -> second.time = timeToSec(songTime); 
             it -> second.name = artist;
 
         } 
         // if the artist exists
         else {
             it -> second.nsongs += 1; // adds songs
+			it -> second.time = timeToSec(songTime);
             //for time: create function that converts to seconds and store it below
             //it -> second.time += songTime;
         }
