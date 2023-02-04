@@ -36,8 +36,8 @@ string timeToMin(int time) {
     colonTime = to_string(min) + ":" + to_string(sec);
     if(sec == 0) colonTime += "0";
     else if(sec < 10) {
-        if(min < 10) colonTime.insert(2, "0");
-        else colonTime.insert(3, "0");
+		int position = colonTime.find(":") + 1;
+		colonTime.insert(position, "0");
     }
     return colonTime;
 }
