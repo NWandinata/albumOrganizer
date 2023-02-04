@@ -35,6 +35,10 @@ string timeToMin(int time) {
     sec = time - min * 60;
     colonTime = to_string(min) + ":" + to_string(sec);
     if(sec == 0) colonTime += "0";
+	else if(sec < 10) {
+		if(min < 10) colonTime.insert(2, "0");
+		else colonTime.insert(3, "0");
+	}
     return colonTime;
 }
 
