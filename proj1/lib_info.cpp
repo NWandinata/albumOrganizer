@@ -1,6 +1,6 @@
 // Makenzie Johnson and Nicholas Wandinata
 // TA: Christian, Andrew
-// Compiled using "make" command; makefile included in tar
+// Compile: g++ -o lib_info lib_info.cpp
 
 /* Description: This program reads info from a file and outputs it as a 
    sorted music library. Artists and albums are in lexicographic order 
@@ -42,6 +42,8 @@ string timeToMin(int time) {
     return colonTime;
 }
 
+/*We create a third map in order to gain access to the Artist struct.
+ * Each iterator will iterate through each map.*/
 
 int main(int argc, char **argv) {
     string musicInfo, title, songTime, artist, album, genre;
@@ -60,26 +62,32 @@ int main(int argc, char **argv) {
     while(getline(file, musicInfo)) {
         istringstream iss(musicInfo);
         iss >> title >> songTime >> artist >> album >> genre >> track;
-
+		
+		//After reading in the information, we replaced '_' with spaces
+			
         replace(artist.begin(), artist.end(), '_', ' ');
         replace(album.begin(), album.end(), '_', ' ');
         replace(title.begin(), title.end(), '_', ' ');
 
         // process for the artist 
-        // if the artist doesnt exists
-        /*When reading in names, ignore puncuations: , . - '. Maps organizse by the value of the string and the extra characters are messing up the value*/
+        // if the artist doesnt exists, we insert the artist into the map and point the 
+		// iterator back to the artist so we can initialize each member in the struct
+
         it = artists.find(artist);
-        if(it == artists.end()){ //if new artist
+        if(it == artists.end()){
             artists.insert(make_pair(artist, art));
             it = artists.find(artist);
             it -> second.nsongs = 1; 
             it -> second.time = timeToSec(songTime);
             it -> second.name = artist;
 
-        } 
-        // if the artist exists
+		}
+
+        // if the artist exists, we increment the nsongs counter and add to the 
+		// total time
+
         else {
-            it -> second.nsongs += 1; // adds songs
+            it -> second.nsongs += 1;
             it -> second.time += timeToSec(songTime);
         }
 
