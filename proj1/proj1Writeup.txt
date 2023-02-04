@@ -1,0 +1,18 @@
+Names: Makenzie Johnson and Nicholas Wandinata
+Github Handles: Kenzie218 and NWandinata
+Repo: https://github.com/NWandinata/cs302projects
+Compilation Command: g++ -o lib_info lib_info.cpp 
+Additional Help: 
+
+Summary:
+Nicholas - Made code for the time conversion functions and reading input from
+the file.
+
+Makenzie - Made code for storing input data and properly formatting the output.
+
+Overall we both spent about an equal amount of time brainstorming and testing 
+ways to store the input data outside of our scheduled meetings. We held 3 
+meetings, each lasting 2-3 hours, to discuss how to implement certain parts 
+of the code. Also, whenever we had an idea that we were unsure of, we would
+try testing our code before pushing to ensure that the project files
+stayed organized.
