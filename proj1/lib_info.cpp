@@ -16,7 +16,6 @@
 #include "lib_info.h"
 
 using namespace std;
-
 // Returns the time as an int of the total seconds
 int timeToSec(string time) {
     int min, sec;
@@ -69,7 +68,7 @@ int main(int argc, char **argv) {
             artists.insert(make_pair(artist, art));
             it = artists.find(artist);
             it -> second.nsongs = 1; 
-            it -> second.time += timeToSec(songTime);
+            it -> second.time = timeToSec(songTime);
             it -> second.name = artist;
 
         } 
@@ -86,7 +85,7 @@ int main(int argc, char **argv) {
             it -> second.albums.insert(make_pair(album, alb));
             al_it = it -> second.albums.find(album);
             al_it -> second.name = album;
-            al_it -> second.time += timeToSec(songTime);
+            al_it -> second.time = timeToSec(songTime);
             al_it -> second.nsongs = 1;
 
         }
@@ -106,25 +105,24 @@ int main(int argc, char **argv) {
 
     //Once done, print out everything
     for(it = artists.begin(); it != artists.end(); it++){
-        string new_name = it -> second.name;
-        replace(new_name.begin(), new_name.end(), '_', ' ');
+        string new_art = it -> second.name;
+        replace(new_art.begin(), new_art.end(), '_', ' ');
 
-        cout << new_name << ": " << it -> second.nsongs << ", " << timeToMin(it -> second.time) << endl;
+        cout << new_art << ": " << it -> second.nsongs << ", " << timeToMin(it -> second.time) << endl;
         
         //albums
         for(al_it = it -> second.albums.begin(); al_it != it -> second.albums.end(); al_it++){
-            string new_name = al_it -> second.name;
-            replace(new_name.begin(), new_name.end(), '_', ' ');
+            string new_alb = al_it -> second.name;
+            replace(new_alb.begin(), new_alb.end(), '_', ' ');
 
-            cout << "        " << new_name << ": " << al_it -> second.nsongs << ", " << timeToMin(al_it -> second.time)<< endl;
+            cout << "        " << new_alb << ": " << al_it -> second.nsongs << ", " << timeToMin(al_it -> second.time)<< endl;
 
             //songs
             for(so_it = al_it -> second.songs.begin(); so_it != al_it -> second.songs.end(); so_it++){
                 string new_name = so_it -> second.title;
                 replace(new_name.begin(), new_name.end(), '_', ' ');
 
-                cout << "                " << so_it -> first << ". " << new_name
-                << ": " << so_it -> second.time << endl;
+                cout << "                " << so_it -> first << ". " << new_name << ": " << so_it -> second.time << endl;
             }
         }
     }
