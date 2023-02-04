@@ -36,8 +36,8 @@ string timeToMin(int time) {
     colonTime = to_string(min) + ":" + to_string(sec);
     if(sec == 0) colonTime += "0";
     else if(sec < 10) {
-		int position = colonTime.find(":") + 1;
-		colonTime.insert(position, "0");
+        int position = colonTime.find(":") + 1;
+        colonTime.insert(position, "0");
     }
     return colonTime;
 }
@@ -61,8 +61,13 @@ int main(int argc, char **argv) {
         istringstream iss(musicInfo);
         iss >> title >> songTime >> artist >> album >> genre >> track;
 
-// process for the artist 
-// if the artist doesnt exists
+        replace(artist.begin(), artist.end(), '_', ' ');
+        replace(album.begin(), album.end(), '_', ' ');
+        replace(title.begin(), title.end(), '_', ' ');
+
+        // process for the artist 
+        // if the artist doesnt exists
+        /*When reading in names, ignore puncuations: , . - '. Maps organizse by the value of the string and the extra characters are messing up the value*/
         it = artists.find(artist);
         if(it == artists.end()){ //if new artist
             artists.insert(make_pair(artist, art));
@@ -105,24 +110,18 @@ int main(int argc, char **argv) {
 
     //Once done, print out everything
     for(it = artists.begin(); it != artists.end(); it++){
-        string new_art = it -> second.name;
-        replace(new_art.begin(), new_art.end(), '_', ' ');
 
-        cout << new_art << ": " << it -> second.nsongs << ", " << timeToMin(it -> second.time) << endl;
+        cout << it -> second.name << ": " << it -> second.nsongs << ", " << timeToMin(it -> second.time) << endl;
         
         //albums
         for(al_it = it -> second.albums.begin(); al_it != it -> second.albums.end(); al_it++){
-            string new_alb = al_it -> second.name;
-            replace(new_alb.begin(), new_alb.end(), '_', ' ');
 
-            cout << "        " << new_alb << ": " << al_it -> second.nsongs << ", " << timeToMin(al_it -> second.time)<< endl;
+            cout << "        " << al_it -> second.name << ": " << al_it -> second.nsongs << ", " << timeToMin(al_it -> second.time)<< endl;
 
             //songs
             for(so_it = al_it -> second.songs.begin(); so_it != al_it -> second.songs.end(); so_it++){
-                string new_name = so_it -> second.title;
-                replace(new_name.begin(), new_name.end(), '_', ' ');
 
-                cout << "                " << so_it -> first << ". " << new_name << ": " << so_it -> second.time << endl;
+                cout << "                " << so_it -> first << ". " << so_it -> second.title << ": " << so_it -> second.time << endl;
             }
         }
     }
