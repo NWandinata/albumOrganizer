@@ -56,8 +56,8 @@ int main(int argc, char **argv) {
 
     ifstream file;
     file.open(argv[1]);
-    while(!file.eof()) {
-        getline(file, musicInfo);
+    
+    while(getline(file, musicInfo)) {
         istringstream iss(musicInfo);
         iss >> title >> songTime >> artist >> album >> genre >> track;
 
