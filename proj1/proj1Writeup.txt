@@ -2,7 +2,8 @@ Names: Makenzie Johnson and Nicholas Wandinata
 Github Handles: Kenzie218 and NWandinata
 Repo: https://github.com/NWandinata/cs302projects
 Compilation Command: g++ -o lib_info lib_info.cpp 
-Additional Help: 
+
+Additional Help: We recieved help from Christian and Andrew
 
 Summary:
 Nicholas - Made code for the time conversion functions and reading input from
